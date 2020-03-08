@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><input type="text" id="listen"></div>
+    <div><input type="text" id="update"></div>
+    <script>
+        function unmask(listenSelector, updateSelector) {
+            if (typeof listenSelector != 'string' || typeof updateSelector != 'string' || listenSelector=='' || updateSelector=='')
+                return "Wrong type of values";
+            var listenElement = document.querySelector(listenSelector);
+            var updateElement = document.querySelector(updateSelector);
+            if (listenElement == null || updateElement == null)
+                return "Cant find the element";
+            listenElement.addEventListener('input', function (event) {
+                updateElement.value = event.target.value
+            });
+        }
+        unmask('#listen', '#update');
+    </script>
+</body>
+
+</html>
